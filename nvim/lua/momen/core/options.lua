@@ -32,4 +32,6 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as the default regis
 
 -- split
 opt.splitright = true
-opt.splitbelow = true
+opt.splitbelow = truNormale
+
+

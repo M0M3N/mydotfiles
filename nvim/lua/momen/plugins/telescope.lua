@@ -1,37 +1,23 @@
 return {
-  "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "nvim-tree/nvim-web-devicons",
-
-  },
+  'nvim-telescope/telescope.nvim', tag = '0.1.8',
+  dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
 
     telescope.setup({
       defaults = {
-        path_display = { "smart" },
         mappings = {
-          -- insert mode
           i = {
-            ["<C-k>"] = actions.move_selection_previous, -- up
-            ["<C-j>"] = actions.move_selection_next, -- down
+            ["<C-k>"] = actions.move_selection_previous,
+            ["<C-j>"] = actions.move_selection_next,
           }
         }
       }
     })
+    local builtin = require('telescope.builtin')
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+    vim.keymap.set('n', '<leader>fs', builtin.live_grep, { desc = 'Telescope live grep' })
+  end
 
-    telescope.load_extension("fzf")
-
-    local keymap = vim.keymap
-
-    keymap.set("n", "<Leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "<Leader>fs", "<cmd>Telescope live_grep<CR>", { desc = "Fuzzy find string in cwd" })
-    keymap.set("n", "<Leader>fw", "<cmd>Telescope grep_string<CR>", { desc = "Fuzzy find word under cursor" })
-    keymap.set("n", "<Leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Find Todos" })
-
-  end,
 }

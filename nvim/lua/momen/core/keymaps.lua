@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 keymap.set("n", "<Leader>nh", ":nohl<CR>", { desc = "clear search highlights" })
-keymap.set("n", "<Esc>", ":nohl<CR>")
+-- keymap.set("n", "<Esc>", ":nohl<CR>") it makes <C-[> ambigououuaaouiees.
 
 -- window management
 keymap.set("n", "<Leader>sv", "<C-w>v", { desc = "Split window vertically" })
@@ -16,15 +16,24 @@ keymap.set("n", "<C-n>", "<cmd>tabnew<CR>", { desc = "Open a new tab" })
 -- try to close selected window, if there is no window, close current tab
 vim.api.nvim_set_keymap("n", "<C-q>", "", {
 	noremap = true,
-	silent = true,
-	callback = function()
-		local success = pcall(function()
-			vim.cmd("close")
-		end)
-		if not success then
-			vim.cmd("tabclose")
-		end
-	end,
+  silent = true,
+  callback = function()
+    local success = pcall(function()
+      vim.cmd("close")
+    end)
+    if not success then
+      -- vim.cmd("tabclose")
+      local successs = pcall(function()
+        vim.cmd("tabclose")
+      end)
+      if not successs then
+        print("cannot close the last tab.")
+      end
+
+    end
+  end,
 })
 keymap.set("n", "<C-]>", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<C-[>", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
+
+vim.cmd("tnoremap <Esc> <C-\\><C-n>") 
