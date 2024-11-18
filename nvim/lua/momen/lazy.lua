@@ -25,9 +25,10 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
     -- import your plugins
-    { import = "momen.plugins" },
+    { import = "momen.plugins" }, { import = "momen.plugins.lsp"}
   },
   -- Configure any other settings here. See the documentation for more details.
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = { enabled = true, notify = false },
+  change_detection = { notify = false }
 })
