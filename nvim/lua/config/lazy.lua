@@ -1,6 +1,5 @@
--- LazyNvim
+---@diagnostic disable: undefined-global
 
--- fn functions are the original builtin vim functions. means we can call them using echo, like: echo stdpath("data")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -15,12 +14,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
-
--- this puts lazy in the runtime path of Neovim.
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { import = "config.plugins" },
+    { "LazyVim/LazyVim" },
+    { import = "plugins" },
   },
 })

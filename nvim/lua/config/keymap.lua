@@ -1,0 +1,54 @@
+---@diagnostic disable: undefined-global
+
+-- general
+vim.keymap.set("n", "<Esc>", ":nohl<CR>")
+vim.keymap.set("i", "<C-h>", "<left>", { noremap = true })
+vim.keymap.set("i", "<C-j>", "<down>", { noremap = true })
+vim.keymap.set("i", "<C-k>", "<up>", { noremap = true })
+vim.keymap.set("i", "<C-l>", "<right>", { noremap = true })
+
+-- fixing some annoying keymaps
+vim.keymap.set("n", "<C-j>", "<nop>")
+vim.keymap.set("i", "<C-d>", "<nop>")
+vim.keymap.set("i", "<C-u>", "<nop>")
+
+-- windows and tab management
+vim.keymap.set("n", "<C-n>", "<cmd>tabnew<CR>")
+vim.keymap.set("n", "<A-]>", "<cmd>tabn<CR>")
+vim.keymap.set("n", "<A-[>", "<cmd>tabp<CR>")
+vim.keymap.set("n", "<Leader>h", "<C-w>s", { noremap = true })
+vim.keymap.set("n", "<Leader>v", "<C-w>v", { noremap = true })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<C-q>", "", {
+  noremap = true,
+  silent = true,
+  callback = function()
+    local s = pcall(function() vim.cmd("close") end)
+    if not s then
+      s = pcall(function() vim.cmd("tabclose") end)
+      if not s then print("use ':q' or something to quit.") end
+    end
+  end,
+})
+
+-- text editing
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("x", "<Leader>p", "\"_dP")
+vim.keymap.set({ "n", "v" }, "<Leader>d", "\"_d")
+vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- my ugly mistyping
+vim.keymap.set("c", "W", "w");
+vim.keymap.set("c", "Q", "q");
+
+-- terminal
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
+-- others
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>e", "<cmd>Ex<CR>", { silent = true })

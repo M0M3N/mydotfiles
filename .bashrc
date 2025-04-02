@@ -7,8 +7,6 @@
 
 PS1='[\u@\h \W]\$ '
 
-TERM='xterm-256color'
-
 alias ff="fzf -m --preview='bat --color always --style='numbers,grid,changes' --theme=Dracula {}' --preview-label=' preview ' --border=rounded --wrap"
 alias bat="bat --color always --style='numbers,grid,changes' --theme=Dracula"
 alias ls='ls --color=auto -v --group-directories-first -1'
@@ -27,10 +25,10 @@ alias v='./v'
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# . "$HOME/.cargo/env"
+# nvm
+alias nvm='. ~/loadnvm.sh; nvm "$@"'
+alias npm='. ~/loadnvm.sh; npm "$@"'
+alias node='. ~/loadnvm.sh; node "$@"'
 
 export PATH="$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH"
 export LANG=en_US.UTF-8
