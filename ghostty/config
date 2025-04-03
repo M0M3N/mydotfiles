@@ -1,0 +1,14 @@
+# themes
+font-size = 14
+theme = tokyonight
+cursor-style = block
+cursor-style-blink = false
+window-decoration = false
+background-opacity = 0.76
+background-blur = true
+
+# options
+mouse-hide-while-typing
+fullscreen
+shell-integration = bash
+app-notifications = false
