@@ -41,11 +41,6 @@ vim.keymap.set("x", "<Leader>p", "\"_dP")
 vim.keymap.set({ "n", "v" }, "<Leader>d", "\"_d")
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- my ugly mistyping
-vim.keymap.set("c", "W", "w");
-vim.keymap.set("c", "Q", "q");
-vim.keymap.set("c", "A", "a");
-
 -- terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
