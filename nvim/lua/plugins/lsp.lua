@@ -17,9 +17,9 @@ return {
         local capabilities = require('blink.cmp').get_lsp_capabilities()
         require("lspconfig").lua_ls.setup { capabilities = capabilities }
         require("lspconfig").clangd.setup {
-            cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
-            filetypes = { "c", "cpp", "objc", "objcpp" },
-            capabilities = capabilities
+            cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose', '--completion-style=detailed' },
+            filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+            capabilities = capabilities,
         }
         require 'lspconfig'.pyright.setup { capabilities = capabilities }
         require 'lspconfig'.ts_ls.setup { capabilities = capabilities }
