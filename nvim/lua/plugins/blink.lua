@@ -22,7 +22,7 @@ return {
                     border = "rounded",
                 }
             },
-            ghost_text = { enabled = true, }
+            -- ghost_text = { enabled = true, }
         },
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },

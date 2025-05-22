@@ -47,3 +47,13 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 -- others
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<CR>", { silent = true })
+
+vim.api.nvim_set_keymap("n", "<Leader>.", "", {
+    noremap = true,
+    callback = function()
+        local ft = vim.bo.filetype
+        if ft == 'python' then
+            vim.cmd('w | !python %')
+        end
+    end
+})

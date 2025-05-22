@@ -25,7 +25,7 @@ return {
 
         vim.keymap.set("n", "<Leader>ff", tbuiltin.find_files)
         vim.keymap.set("n", "<Leader>fs", tbuiltin.live_grep)
-        vim.keymap.set("n", "<Leader>fz", tbuiltin.current_buffer_fuzzy_find)
+        vim.keymap.set("n", "<C-f>", tbuiltin.buffers)
         vim.keymap.set("n", "q:", tbuiltin.command_history, { noremap = true })
         vim.keymap.set("n", "man", function() tbuiltin.man_pages({ sections = { "ALL" } }) end)
     end

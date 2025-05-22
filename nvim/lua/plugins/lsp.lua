@@ -24,6 +24,7 @@ return {
         require 'lspconfig'.pyright.setup { capabilities = capabilities }
         require 'lspconfig'.ts_ls.setup { capabilities = capabilities }
         require 'lspconfig'.taplo.setup {} -- TOML
+        require 'lspconfig'.rust_analyzer.setup({ capabilities = capabilities, })
 
         -- Format on save for (AFAIK) all language servers.
         -- To use LSP features beyond those provided by Nvim (see lsp-buf), you can set

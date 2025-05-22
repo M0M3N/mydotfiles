@@ -8,7 +8,7 @@ set.termguicolors = true
 set.number = true
 set.relativenumber = true
 set.scrolloff = 8
-set.laststatus = 3
+set.laststatus = 0
 set.icon = true
 
 -- text
@@ -16,7 +16,6 @@ set.expandtab = true
 vim.cmd("autocmd Filetype make setlocal noexpandtab")
 set.autoindent = true
 set.breakindent = true
-set.foldclose = "all"
 set.smartindent = true
 set.shiftwidth = 4
 
